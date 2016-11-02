@@ -39,3 +39,7 @@ manually :
 ###OPTION
 
     g:jim_root : root package of you project, default is 'java'.
+
+###LICENSE
+
+    MIT license
