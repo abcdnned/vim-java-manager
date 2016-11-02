@@ -1,12 +1,12 @@
 #VIM JAVA IMPORT MANAGER
 
-help insert import statements and package statements in java.
+help insert import and package statements in java.
 
 ###INSTALL
 
 use vbundle :
 
-    add follow line to your vimfiles :
+    add following line to your vimfiles :
 
     Plugin 'abcdnned/java-import-manager'
 
