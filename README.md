@@ -1,4 +1,7 @@
 #VIM JAVA IMPORT MANAGER
+
+help insert import statements and package statements in java.
+
 ###INSTALL
 
 use vbundle :
