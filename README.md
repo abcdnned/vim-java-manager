@@ -1,4 +1,4 @@
-#VIM JAVA IMPORT MANAGER
+#VIM JAVA MANAGER
 
 help insert import and package statements in java.
 
