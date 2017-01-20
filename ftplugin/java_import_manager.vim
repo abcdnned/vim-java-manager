@@ -55,6 +55,8 @@ let s:importPattern = '^\s*import\s\+.*;\?$'
 fun! s:jim_sort()
     let op = line('.')
     let oc = col('.')
+    
+    call cursor(1,0)
 
     let s = search(s:importPattern)
     if s > 0
