@@ -47,6 +47,7 @@ fun! s:jim_prepare()
 
     call append(a:i, '')
     call cursor(a:i,0)
+    normal zz
     startinsert
 endfunction
 
