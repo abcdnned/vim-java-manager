@@ -1,35 +1,35 @@
-if exists("g:java_import_manager")
+if exists("g:scala_import_manager")
     finish
 endif
 
-let g:java_import_manager = 1
+let g:scala_import_manager = 1
 
-if !exists("g:jim_root")
-    let g:jim_root = 'java'
+if !exists("g:jim_scala_root")
+    let g:jim_scala_root = 'scala'
 endif
 
 fun! s:isimpol(line)
     return stridx(a:line, 'import') == 0
 endfunction
 
-fun! s:jim_declare_package()
+fun! s:jim_scala_declare_package()
     let op = line('.')
     let oc = col('.')
 
     let dir = expand('%:p:h')
-    let s = stridx(dir, g:jim_root)
+    let s = stridx(dir, g:jim_scala_root)
     if s > 0
-        let dir = strpart(dir, s + strlen(g:jim_root) + 1)
+        let dir = strpart(dir, s + strlen(g:jim_scala_root) + 1)
     endif
     let dir = substitute(dir, '[\\\/]', '.', 'g')
 
     normal gg
-    exe "normal ^Cpackage " . dir . ';'
+    exe "normal ^Cpackage " . dir
 
     call cursor(op,oc)
 endfun
 
-fun! s:jim_prepare()
+fun! s:jim_scala_prepare()
     normal mj
     let a:i = 2
     let a:n = line('$')
@@ -52,7 +52,7 @@ endfunction
 
 let s:importPattern = '^\s*import\s\+.*;\?$'
 
-fun! s:jim_sort()
+fun! s:jim_scala_sort()
     let op = line('.')
     let oc = col('.')
     
@@ -72,10 +72,6 @@ fun! s:jim_sort()
 endfunction
 
 
-command! JIMPrepareImport :call s:jim_prepare()
-command! JIMSortImport :call s:jim_sort()
-command! JIMDeclarePackage :call s:jim_declare_package()
-
-map <buffer> <script> <unique> <silent> <Leader>1i :call <SID>jim_prepare()<CR>
-map <buffer> <script> <unique> <silent> <Leader>1s :call <SID>jim_sort()<CR>
-map <buffer> <script> <unique> <silent> <Leader>1p :call <SID>jim_declare_package()<CR>
+map <buffer> <script> <unique> <silent> <Leader>1i :call <SID>jim_scala_prepare()<CR>
+map <buffer> <script> <unique> <silent> <Leader>1s :call <SID>jim_scala_sort()<CR>
+map <buffer> <script> <unique> <silent> <Leader>1p :call <SID>jim_scala_declare_package()<CR>
