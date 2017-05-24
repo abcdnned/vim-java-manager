@@ -1,12 +1,7 @@
-if exists("g:java_import_manager")
+if exists("b:jim_root")
     finish
 endif
-
-let g:java_import_manager = 1
-
-if !exists("g:jim_root")
-    let g:jim_root = 'java'
-endif
+let b:jim_root = 'java'
 
 fun! s:isimpol(line)
     return stridx(a:line, 'import') == 0
@@ -17,9 +12,9 @@ fun! s:jim_declare_package()
     let oc = col('.')
 
     let dir = expand('%:p:h')
-    let s = stridx(dir, g:jim_root)
+    let s = stridx(dir, b:jim_root)
     if s > 0
-        let dir = strpart(dir, s + strlen(g:jim_root) + 1)
+        let dir = strpart(dir, s + strlen(b:jim_root) + 1)
     endif
     let dir = substitute(dir, '[\\\/]', '.', 'g')
 
